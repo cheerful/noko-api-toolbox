@@ -1,24 +1,24 @@
 # Hey there!
 #
 # This is a basic script that shows how to get all the billable entries you can
-# view in your Freckle account using API v2. It parses the JSON response and
+# view in your Noko account using API v2. It parses the JSON response and
 # stores it as an array of hashes.
 #
 # This script also shows you how to parse the Pagination header so that you can
 # get the next page of results without having to write a new query URL
 #
 # You can learn about querying for entries here:
-# http://developer.letsfreckle.com/v2/entries/#list-entries
+# http://developer.nokotime.com/v2/entries/#list-entries
 #
 # You can learn more about API v2 here:
-# http://developer.letsfreckle.com/v2/
+# http://developer.nokotime.com/v2/
 #
 # The API key provided is for our API test account, to run the command with your
 # own account you will have to create a personal access token and replace the
 # test account token.
 #
 # Cheers,
-# Your Freckle Team
+# Your Noko Team
 require 'net/http'
 require 'json'
 require 'pp' # to make the printed results look nicer
@@ -45,7 +45,7 @@ end
 # "API v2" tab in your settings
 PERSONAL_ACCESS_TOKEN = "scbp72wdc528hm8n52fowkma321tn58-jc1l2dkil0pnb75xjni48ad2wwsgr1d"
 
-uri = URI('https://api.letsfreckle.com/v2/entries')
+uri = URI('https://api.nokotime.com/v2/entries')
 
 # add a query parameter to only return billable entries
 uri.query = "billable=true"
@@ -58,8 +58,8 @@ http.use_ssl = true
 request =  Net::HTTP::Get.new(uri)
 
 # Add your Personal Access Token to the Header of the request,
-# which authenticates you to access the Freckle API
-request.add_field "X-FreckleToken", PERSONAL_ACCESS_TOKEN
+# which authenticates you to access the Noko API
+request.add_field "X-NokoToken", PERSONAL_ACCESS_TOKEN
 
 # Make the request and Parse the Response:
 response = http.request(request)
